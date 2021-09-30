@@ -6,11 +6,9 @@ include_directories(inc)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 
-#find_package(SFML 2.5 COMPONENTS system window graphics network audio REQUIRED)
-
 add_library(
     yahtz
-    src/template.cpp
+    src/gameEngine.cpp
     )
     
-target_link_libraries(${PROJECT_NAME} sfml-system sfml-window sfml-graphics sfml-network sfml-audio yahtz)
+target_link_libraries(${PROJECT_NAME} yahtz sfml-system sfml-window sfml-graphics sfml-network sfml-audio)

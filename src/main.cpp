@@ -1,35 +1,17 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include <gameEngine.h>
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Yahtzee!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-    sf::Event event;
+    gameEngine game;
 
-    while (window.isOpen())
-    {
+    while (game.isRunning()) {
         // Event Loop
-        while (window.pollEvent(event))
-        {
-            switch (event.type) {
-                case sf::Event::Closed:
-                    window.close();
-                    break;
-                case sf::Event::KeyPressed:
-                    if (event.key.code == sf::Keyboard::Escape)
-                        window.close();
-                    break;
-            }
-        }
+        game.processEvent();
 
         // Update
-        window.clear();
-        window.draw(shape);
 
         //Render
-        window.display();
+        game.renderScreen();
 
     }
 

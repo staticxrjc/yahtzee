@@ -155,6 +155,33 @@ yahtzee/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtzee.dir/build.make CMakeFiles/yahtzee.dir/build
 .PHONY : yahtzee/fast
 
+src/gameEngine.o: src/gameEngine.cpp.o
+
+.PHONY : src/gameEngine.o
+
+# target to build an object file
+src/gameEngine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/gameEngine.cpp.o
+.PHONY : src/gameEngine.cpp.o
+
+src/gameEngine.i: src/gameEngine.cpp.i
+
+.PHONY : src/gameEngine.i
+
+# target to preprocess a source file
+src/gameEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/gameEngine.cpp.i
+.PHONY : src/gameEngine.cpp.i
+
+src/gameEngine.s: src/gameEngine.cpp.s
+
+.PHONY : src/gameEngine.s
+
+# target to generate assembly for a file
+src/gameEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/gameEngine.cpp.s
+.PHONY : src/gameEngine.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -182,33 +209,6 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtzee.dir/build.make CMakeFiles/yahtzee.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/template.o: src/template.cpp.o
-
-.PHONY : src/template.o
-
-# target to build an object file
-src/template.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/template.cpp.o
-.PHONY : src/template.cpp.o
-
-src/template.i: src/template.cpp.i
-
-.PHONY : src/template.i
-
-# target to preprocess a source file
-src/template.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/template.cpp.i
-.PHONY : src/template.cpp.i
-
-src/template.s: src/template.cpp.s
-
-.PHONY : src/template.s
-
-# target to generate assembly for a file
-src/template.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/template.cpp.s
-.PHONY : src/template.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -219,12 +219,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... yahtz"
 	@echo "... yahtzee"
+	@echo "... src/gameEngine.o"
+	@echo "... src/gameEngine.i"
+	@echo "... src/gameEngine.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/template.o"
-	@echo "... src/template.i"
-	@echo "... src/template.s"
 .PHONY : help
 
 
