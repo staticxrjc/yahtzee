@@ -46,9 +46,17 @@ void gameEngine::processEvent(){
 
 void gameEngine::renderScreen(){
     this->window->clear(sf::Color(0,0,255,255));
-    dice yDice(1, window, 10.0f, 10.0f, 100.0f);
-    yDice.drawSelf();
-    dice xDice(1, window, 120.0f, 10.0f, 100.0f);
-    xDice.drawSelf();
+    dice Dice1(1, window, 10.0f, 10.0f, 100.0f);
+    Dice1.drawSelf();
+    dice Dice2(2, window, 120.0f, 10.0f, 100.0f);
+    Dice2.drawSelf();
+    dice Dice3(3, window, 230.0f, 10.0f, 100.0f);
+    Dice3.drawSelf();
+    dice Dice4(4, window, 340.0f, 10.0f, 100.0f);
+    Dice4.drawSelf();
+    dice Dice5(5, window, 450.0f, 10.0f, 100.0f);
+    Dice5.drawSelf();
+    dice Dice6(6, window, 560.0f, 10.0f, 100.0f);
+    Dice6.drawSelf();
     this->window->display();
 }
