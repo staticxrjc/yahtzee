@@ -46,11 +46,9 @@ void gameEngine::processEvent(){
 
 void gameEngine::renderScreen(){
     this->window->clear(sf::Color(0,0,255,255));
-    sf::VertexArray quad(sf::Quads, 4);
-    quad[0].position = sf::Vector2f(10.f,10.f);
-    quad[1].position = sf::Vector2f(110.f,10.f);
-    quad[2].position = sf::Vector2f(110.f,110.f);
-    quad[3].position = sf::Vector2f(10.f,110.f);
-    this->window->draw(quad);
+    dice yDice(1, window, 10.0f, 10.0f, 100.0f);
+    yDice.drawSelf();
+    dice xDice(1, window, 120.0f, 10.0f, 100.0f);
+    xDice.drawSelf();
     this->window->display();
 }

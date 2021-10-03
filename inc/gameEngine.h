@@ -2,6 +2,7 @@
 #define GAME__H
 
 #include <SFML/Graphics.hpp>
+#include <dice.h>
 
 class gameEngine {
 private:

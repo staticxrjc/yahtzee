@@ -9,6 +9,7 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 add_library(
     yahtz
     src/gameEngine.cpp
+    src/dice.cpp
     )
     
 target_link_libraries(${PROJECT_NAME} yahtz sfml-system sfml-window sfml-graphics sfml-network sfml-audio)

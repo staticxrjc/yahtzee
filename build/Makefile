@@ -155,6 +155,33 @@ yahtzee/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtzee.dir/build.make CMakeFiles/yahtzee.dir/build
 .PHONY : yahtzee/fast
 
+src/dice.o: src/dice.cpp.o
+
+.PHONY : src/dice.o
+
+# target to build an object file
+src/dice.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/dice.cpp.o
+.PHONY : src/dice.cpp.o
+
+src/dice.i: src/dice.cpp.i
+
+.PHONY : src/dice.i
+
+# target to preprocess a source file
+src/dice.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/dice.cpp.i
+.PHONY : src/dice.cpp.i
+
+src/dice.s: src/dice.cpp.s
+
+.PHONY : src/dice.s
+
+# target to generate assembly for a file
+src/dice.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/dice.cpp.s
+.PHONY : src/dice.cpp.s
+
 src/gameEngine.o: src/gameEngine.cpp.o
 
 .PHONY : src/gameEngine.o
@@ -219,6 +246,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... yahtz"
 	@echo "... yahtzee"
+	@echo "... src/dice.o"
+	@echo "... src/dice.i"
+	@echo "... src/dice.s"
 	@echo "... src/gameEngine.o"
 	@echo "... src/gameEngine.i"
 	@echo "... src/gameEngine.s"
