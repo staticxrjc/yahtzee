@@ -2,6 +2,8 @@
 #define DICE__H
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <random>
 
 class dice {
 private:
@@ -19,6 +21,7 @@ public:
     dice(int, sf::RenderWindow*, float, float, float);
     dice(int, sf::RenderWindow*);
     void setValue(int);
+    void rollDice();
     int getValue();
     void drawSelf();
 };

@@ -11,9 +11,18 @@ void gameEngine::initWindow(int width, int height){
     this->window = new sf::RenderWindow(this->videoMode, "Yahtzee!");
 }
 
+void gameEngine::initDice(){
+    Dice1 = new dice(0, window, 10.0f, 10.0f, 100.0f);
+    Dice2 = new dice(0, window, 120.0f, 10.0f, 100.0f);
+    Dice3 = new dice(0, window, 230.0f, 10.0f, 100.0f);
+    Dice4 = new dice(0, window, 340.0f, 10.0f, 100.0f);
+    Dice5 = new dice(0, window, 450.0f, 10.0f, 100.0f);
+}
+
 gameEngine::gameEngine(){
     initVariables();
     initWindow(800, 600);
+    initDice();
 }
 
 gameEngine::gameEngine(int height, int width){
@@ -23,6 +32,19 @@ gameEngine::gameEngine(int height, int width){
 
 gameEngine::~gameEngine() {
     delete this->window;
+    delete Dice1;
+    delete Dice2;
+    delete Dice3;
+    delete Dice4;
+    delete Dice5;
+}
+
+void gameEngine::rollDice() {
+    Dice1->rollDice();
+    Dice2->rollDice();
+    Dice3->rollDice();
+    Dice4->rollDice();
+    Dice5->rollDice();
 }
 
 bool gameEngine::isRunning(){
@@ -39,6 +61,8 @@ void gameEngine::processEvent(){
             case sf::Event::KeyPressed:
                 if (event.key.code == sf::Keyboard::Escape)
                     window->close();
+                if (event.key.code == sf::Keyboard::Enter)
+                    this->rollDice();
                 break;
         }
     }
@@ -46,17 +70,10 @@ void gameEngine::processEvent(){
 
 void gameEngine::renderScreen(){
     this->window->clear(sf::Color(0,0,255,255));
-    dice Dice1(1, window, 10.0f, 10.0f, 100.0f);
-    Dice1.drawSelf();
-    dice Dice2(2, window, 120.0f, 10.0f, 100.0f);
-    Dice2.drawSelf();
-    dice Dice3(3, window, 230.0f, 10.0f, 100.0f);
-    Dice3.drawSelf();
-    dice Dice4(4, window, 340.0f, 10.0f, 100.0f);
-    Dice4.drawSelf();
-    dice Dice5(5, window, 450.0f, 10.0f, 100.0f);
-    Dice5.drawSelf();
-    dice Dice6(6, window, 560.0f, 10.0f, 100.0f);
-    Dice6.drawSelf();
+    Dice1->drawSelf();
+    Dice2->drawSelf();
+    Dice3->drawSelf();
+    Dice4->drawSelf();
+    Dice5->drawSelf();
     this->window->display();
 }

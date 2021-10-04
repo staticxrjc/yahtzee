@@ -1,5 +1,4 @@
 #include <dice.h>
-#include <iostream>
 
 void dice::initVariables() {
     sf::Color dotColor(0,0,0,255);
@@ -47,15 +46,29 @@ dice::dice(int value, sf::RenderWindow *window)
         m_yPosition = 0.0f;
         m_size = 100.0f;
         initVariables();
+        if (m_value == 0) {
+            rollDice();
+        }
 }
 
 dice::dice(int value, sf::RenderWindow *window, float x, float y, float size) 
     : m_value(value), m_window(window), m_xPosition(x), m_yPosition(y), m_size(size) {
         initVariables();
+        if (m_value == 0) {
+            rollDice();
+        }
     }
 
 void dice::setValue(int value) {
     m_value = value;
+}
+
+void dice::rollDice() {
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist6(1,6);
+
+    m_value = dist6(rng);
 }
 
 int dice::getValue() { return m_value; }
