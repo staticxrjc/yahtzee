@@ -182,6 +182,33 @@ src/dice.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/dice.cpp.s
 .PHONY : src/dice.cpp.s
 
+src/diceContainer.o: src/diceContainer.cpp.o
+
+.PHONY : src/diceContainer.o
+
+# target to build an object file
+src/diceContainer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/diceContainer.cpp.o
+.PHONY : src/diceContainer.cpp.o
+
+src/diceContainer.i: src/diceContainer.cpp.i
+
+.PHONY : src/diceContainer.i
+
+# target to preprocess a source file
+src/diceContainer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/diceContainer.cpp.i
+.PHONY : src/diceContainer.cpp.i
+
+src/diceContainer.s: src/diceContainer.cpp.s
+
+.PHONY : src/diceContainer.s
+
+# target to generate assembly for a file
+src/diceContainer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yahtz.dir/build.make CMakeFiles/yahtz.dir/src/diceContainer.cpp.s
+.PHONY : src/diceContainer.cpp.s
+
 src/gameEngine.o: src/gameEngine.cpp.o
 
 .PHONY : src/gameEngine.o
@@ -249,6 +276,9 @@ help:
 	@echo "... src/dice.o"
 	@echo "... src/dice.i"
 	@echo "... src/dice.s"
+	@echo "... src/diceContainer.o"
+	@echo "... src/diceContainer.i"
+	@echo "... src/diceContainer.s"
 	@echo "... src/gameEngine.o"
 	@echo "... src/gameEngine.i"
 	@echo "... src/gameEngine.s"

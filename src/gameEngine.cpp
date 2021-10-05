@@ -12,11 +12,7 @@ void gameEngine::initWindow(int width, int height){
 }
 
 void gameEngine::initDice(){
-    Dice1 = new dice(0, window, 10.0f, 10.0f, 100.0f);
-    Dice2 = new dice(0, window, 120.0f, 10.0f, 100.0f);
-    Dice3 = new dice(0, window, 230.0f, 10.0f, 100.0f);
-    Dice4 = new dice(0, window, 340.0f, 10.0f, 100.0f);
-    Dice5 = new dice(0, window, 450.0f, 10.0f, 100.0f);
+    DiceContainer = new diceContainer(window);
 }
 
 gameEngine::gameEngine(){
@@ -32,19 +28,11 @@ gameEngine::gameEngine(int height, int width){
 
 gameEngine::~gameEngine() {
     delete this->window;
-    delete Dice1;
-    delete Dice2;
-    delete Dice3;
-    delete Dice4;
-    delete Dice5;
+    delete DiceContainer;
 }
 
 void gameEngine::rollDice() {
-    Dice1->rollDice();
-    Dice2->rollDice();
-    Dice3->rollDice();
-    Dice4->rollDice();
-    Dice5->rollDice();
+    DiceContainer->rollDice();
 }
 
 bool gameEngine::isRunning(){
@@ -70,10 +58,6 @@ void gameEngine::processEvent(){
 
 void gameEngine::renderScreen(){
     this->window->clear(sf::Color(0,0,255,255));
-    Dice1->drawSelf();
-    Dice2->drawSelf();
-    Dice3->drawSelf();
-    Dice4->drawSelf();
-    Dice5->drawSelf();
+    DiceContainer->drawDice();
     this->window->display();
 }

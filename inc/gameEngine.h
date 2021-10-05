@@ -2,7 +2,7 @@
 #define GAME__H
 
 #include <SFML/Graphics.hpp>
-#include <dice.h>
+#include <diceContainer.h>
 
 class gameEngine {
 private:
@@ -12,11 +12,7 @@ private:
     sf::Event event;
 
     // Dice variables
-    dice *Dice1;
-    dice *Dice2;
-    dice *Dice3;
-    dice *Dice4;
-    dice *Dice5;
+    diceContainer *DiceContainer;
 
     // Initialization of variables to null
     void initVariables();
