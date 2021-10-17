@@ -10,6 +10,8 @@ private:
     sf::RenderWindow *window;
     sf::VideoMode videoMode;
     sf::Event event;
+    sf::Vector2i mousePosition;
+    sf::Vector2f mousePositionRelative;
 
     // Dice variables
     diceContainer *DiceContainer;
@@ -28,6 +30,7 @@ public:
     gameEngine(int, int);
     ~gameEngine();
     void rollDice();
+    void updateMousePosition();
     bool isRunning();
     bool gameEvent();
     void processEvent();

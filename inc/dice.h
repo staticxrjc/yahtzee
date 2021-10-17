@@ -12,6 +12,7 @@ private:
     float m_xPosition;
     float m_yPosition;
     float m_size;
+    bool m_selected;
     sf::RenderWindow *m_window;
 
     // private functions
@@ -22,6 +23,10 @@ public:
     dice(int, sf::RenderWindow*);
     void setValue(int);
     void rollDice();
+    bool getSelected();
+    void setSelected(bool);
+    void toggleSelected();
+    bool vertexInBounds(sf::Vector2f*);
     int getValue();
     void drawSelf();
 };

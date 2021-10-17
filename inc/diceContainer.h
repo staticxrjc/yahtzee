@@ -15,5 +15,6 @@ private:
     ~diceContainer();
     void drawDice();
     void rollDice();
+    void checkIfSelected(sf::Vector2f*);
 };
 #endif // DICECONTAINER_H

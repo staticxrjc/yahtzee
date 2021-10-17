@@ -3,6 +3,7 @@
 void dice::initVariables() {
     sf::Color dotColor(0,0,0,255);
     float dotRadius = m_size/12;
+    m_selected = false;
     // Set center dot location
     m_diceDots[0].setRadius(dotRadius);
     m_diceDots[0].setFillColor(dotColor);
@@ -64,11 +65,30 @@ void dice::setValue(int value) {
 }
 
 void dice::rollDice() {
-    std::random_device dev;
-    std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist6(1,6);
+    if(!m_selected) {
+        std::random_device dev;
+        std::mt19937 rng(dev());
+        std::uniform_int_distribution<std::mt19937::result_type> dist6(1,6);
 
-    m_value = dist6(rng);
+        m_value = dist6(rng);
+    }
+}
+
+bool dice::getSelected(){ return m_selected; }
+
+void dice::setSelected(bool selected) {
+    m_selected = selected;
+}
+
+void dice::toggleSelected(){
+    m_selected = !m_selected;
+}
+
+bool dice::vertexInBounds(sf::Vector2f *mousePosition){
+    if (mousePosition->y >= m_yPosition && mousePosition->y <= (m_yPosition + m_size))
+        if (mousePosition->x >= m_xPosition && mousePosition->x <= (m_xPosition + m_size))
+            return true;
+    return false;
 }
 
 int dice::getValue() { return m_value; }
@@ -80,6 +100,26 @@ void dice::drawSelf() {
     quad[2].position = sf::Vector2f(m_xPosition + m_size,m_yPosition + m_size);
     quad[3].position = sf::Vector2f(m_xPosition,m_yPosition + m_size);
     this->m_window->draw(quad);
+
+    // If selected draw box around dice
+    if (m_selected) {
+        sf::Color lineColor(255,0,0,255);
+        sf::VertexArray box(sf::LineStrip, 5);
+        int thickness = 4;
+        for (int i = 0; i < thickness; i++) {
+            box[0].position = sf::Vector2f(m_xPosition,m_yPosition + i);
+            box[0].color = lineColor;
+            box[1].position = sf::Vector2f(m_xPosition + m_size - i,m_yPosition + i);
+            box[1].color = lineColor;
+            box[2].position = sf::Vector2f(m_xPosition + m_size - i,m_yPosition + m_size - i);
+            box[2].color = lineColor;
+            box[3].position = sf::Vector2f(m_xPosition + i,m_yPosition + m_size - i);
+            box[3].color = lineColor;
+            box[4].position = sf::Vector2f(m_xPosition + i,m_yPosition + i);
+            box[4].color = lineColor;
+            this->m_window->draw(box);
+        }
+    }
 
     // Middle position
     if( m_value == 1 || m_value == 3 || m_value == 5 ) {

@@ -35,6 +35,13 @@ void gameEngine::rollDice() {
     DiceContainer->rollDice();
 }
 
+void gameEngine::updateMousePosition() {
+    mousePosition = sf::Mouse::getPosition(*this->window);
+    mousePositionRelative = this->window->mapPixelToCoords(this->mousePosition);
+    std::cout << "Mouse X: " << mousePositionRelative.x << std::endl;
+    std::cout << "Mouse Y: " << mousePositionRelative.y << std::endl;
+}
+
 bool gameEngine::isRunning(){
     return this->window->isOpen();
 }
@@ -51,6 +58,12 @@ void gameEngine::processEvent(){
                     window->close();
                 if (event.key.code == sf::Keyboard::Enter)
                     this->rollDice();
+                break;
+            case sf::Event::MouseButtonPressed:
+                if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                    this->updateMousePosition();
+                    this->DiceContainer->checkIfSelected(&mousePositionRelative);
+                }
                 break;
         }
     }

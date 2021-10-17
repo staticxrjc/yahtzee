@@ -32,3 +32,11 @@ void diceContainer::rollDice() {
         diceSet[i]->rollDice();
     }
 }
+
+void diceContainer::checkIfSelected(sf::Vector2f *mousePosition) {
+    for (int i = 0; i < diceSet.size(); i++) {
+        if(diceSet[i]->vertexInBounds(mousePosition)) {
+            diceSet[i]->toggleSelected();
+        }
+    }
+}
