@@ -3,6 +3,7 @@
 // Private Functions
 void gameEngine::initVariables(){
     this->window = nullptr;
+    m_numberOfPlayers = 0;
 }
 
 void gameEngine::initWindow(int width, int height){
@@ -15,20 +16,44 @@ void gameEngine::initDice(){
     DiceContainer = new diceContainer(window);
 }
 
+void gameEngine::initPlayers(){
+    // 1) Dialogue that prompts number of players
+    m_numberOfPlayers = promptInt("How many players?");
+    // 2) For each player, prompt name and create no player class
+    for (int i = 0; i < m_numberOfPlayers; i++) {
+        m_player[i] = new player(promptString("Enter player # name: "));
+    }
+    std::cout << m_player[0]->getName() << std::endl;
+}
+
+int gameEngine::promptInt(const std::string question) {
+    return 1;
+}
+
+std::string gameEngine::promptString(const std::string question) {
+    return "taco";
+}
+
 gameEngine::gameEngine(){
     initVariables();
     initWindow(800, 600);
+    initPlayers();
     initDice();
 }
 
 gameEngine::gameEngine(int height, int width){
     initVariables();
     initWindow(width, height);
+    initPlayers();
+    initDice();
 }
 
 gameEngine::~gameEngine() {
     delete this->window;
     delete DiceContainer;
+    for(int i = 0; i < m_numberOfPlayers; i++){
+        delete m_player[i];
+    }
 }
 
 void gameEngine::rollDice() {

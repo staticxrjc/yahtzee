@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <diceContainer.h>
+#include <player.h>
 
 class gameEngine {
 private:
@@ -16,6 +17,10 @@ private:
     // Dice variables
     diceContainer *DiceContainer;
 
+    // Players variables
+    player *m_player[6];
+    int m_numberOfPlayers;
+
     // Initialization of variables to null
     void initVariables();
 
@@ -24,6 +29,13 @@ private:
 
     // Initialize the dice
     void initDice();
+
+    // Initialize Players
+    void initPlayers();
+
+    // Prompting functions
+    int promptInt(std::string);
+    std::string promptString(std::string);
 
 public:
     gameEngine();

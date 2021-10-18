@@ -19,6 +19,9 @@ diceContainer::diceContainer(sf::RenderWindow* window) {
 
 diceContainer::~diceContainer() {
     // DELETE THE NEW DICE
+    for (int i = 0; i < diceSet.size(); i++) {
+        delete diceSet[i];
+    }
 }
 
 void diceContainer::drawDice() {

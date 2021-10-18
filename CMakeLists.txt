@@ -12,6 +12,7 @@ add_library(
     src/gameEngine.cpp
     src/dice.cpp
     src/diceContainer.cpp
+    src/player.cpp
     )
     
 target_link_libraries(${PROJECT_NAME} yahtz sfml-system sfml-window sfml-graphics sfml-network sfml-audio)

@@ -1,5 +1,5 @@
 #ifndef DICE_H
-#define DICE__H
+#define DICE_H
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
