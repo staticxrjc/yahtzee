@@ -3,7 +3,7 @@
 // Private Functions
 void gameEngine::initVariables(){
     this->window = nullptr;
-    m_numberOfPlayers = 0;
+    gameOver = false;
 }
 
 void gameEngine::initWindow(int width, int height){
@@ -18,12 +18,22 @@ void gameEngine::initDice(){
 
 void gameEngine::initPlayers(){
     // 1) Dialogue that prompts number of players
-    m_numberOfPlayers = promptInt("How many players?");
+    // Create a new textBox
+    // m_textBoxPrompt = new textBox((std::string*)m_numberOfPlayers);
+    textBox<int> numPlayers(window, &m_numberOfPlayers);
+    numPlayers.setPrompt("How many players?");
+    numPlayers.promptForInput();
     // 2) For each player, prompt name and create no player class
     for (int i = 0; i < m_numberOfPlayers; i++) {
-        m_player[i] = new player(promptString("Enter player # name: "));
+        m_player[i] = new player();
+        std::cout << "Player " << i+1 << " name: ";
+        std::string name;
+        std::cin >> name;
+        m_player[i]->setName(name);
+        // m_textBoxPrompt = new textBox(m_player[i]->getPlayerNameReference());
+        interuptTextEntry();
+        std::cout << "Player " << m_player[i]->getPlayerName() << std::endl;
     }
-    std::cout << m_player[0]->getName() << std::endl;
 }
 
 int gameEngine::promptInt(const std::string question) {
@@ -71,7 +81,21 @@ bool gameEngine::isRunning(){
     return this->window->isOpen();
 }
 
+void gameEngine::interuptTextEntry(){
+    while(this->window->pollEvent(event)){
+        switch (event.type) {
+            case sf::Event::TextEntered:
+
+                // If escape is pressed (for testing)
+                if(event.text.unicode == 27) {
+                }
+            break;
+        }
+    }
+}
+
 void gameEngine::processEvent(){
+
     while (this->window->pollEvent(event))
     {
         switch (event.type) {

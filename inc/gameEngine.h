@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <diceContainer.h>
 #include <player.h>
+#include <textBox.h>
+#include <array>
 
 class gameEngine {
 private:
@@ -13,6 +15,9 @@ private:
     sf::Event event;
     sf::Vector2i mousePosition;
     sf::Vector2f mousePositionRelative;
+
+    // Game Variables/Flags
+    bool gameOver;
 
     // Dice variables
     diceContainer *DiceContainer;
@@ -45,6 +50,7 @@ public:
     void updateMousePosition();
     bool isRunning();
     bool gameEvent();
+    void interuptTextEntry();
     void processEvent();
     void renderScreen();
 };
