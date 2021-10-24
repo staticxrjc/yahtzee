@@ -19,6 +19,9 @@ private:
     // Game Variables/Flags
     bool gameOver;
 
+    // Resources
+    sf::Font font;
+
     // Dice variables
     diceContainer *DiceContainer;
 
@@ -28,6 +31,9 @@ private:
 
     // Initialization of variables to null
     void initVariables();
+
+    // Initialize fons
+    void initFonts();
 
     // Initialize Window
     void initWindow(int, int);

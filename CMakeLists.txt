@@ -3,6 +3,7 @@ project(yahtzee VERSION 1.0.0)
 
 add_subdirectory(inc)
 add_subdirectory(src)
+add_subdirectory(fonts)
 include_directories(inc)
 
 add_executable(${PROJECT_NAME} src/main.cpp)

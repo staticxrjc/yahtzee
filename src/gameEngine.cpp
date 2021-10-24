@@ -6,6 +6,13 @@ void gameEngine::initVariables(){
     gameOver = false;
 }
 
+// init fonts
+void gameEngine::initFonts(){
+    if(!this->font.loadFromFile("../fonts/Nasa21-l23X.ttf")){
+        std::cout << "ERROR: Failed to load font\n";
+    }
+}
+
 void gameEngine::initWindow(int width, int height){
     this->videoMode.height = height;
     this->videoMode.width = width;
@@ -20,8 +27,8 @@ void gameEngine::initPlayers(){
     // 1) Dialogue that prompts number of players
     // Create a new textBox
     // m_textBoxPrompt = new textBox((std::string*)m_numberOfPlayers);
-    textBox<int> numPlayers(window, &m_numberOfPlayers);
-    numPlayers.setPrompt("How many players?");
+    textBox<int> numPlayers(window, &m_numberOfPlayers, &font);
+    numPlayers.setPrompt("Enter Number of players: _");
     numPlayers.promptForInput();
     // 2) For each player, prompt name and create no player class
     for (int i = 0; i < m_numberOfPlayers; i++) {
@@ -46,6 +53,7 @@ std::string gameEngine::promptString(const std::string question) {
 
 gameEngine::gameEngine(){
     initVariables();
+    initFonts();
     initWindow(800, 600);
     initPlayers();
     initDice();
@@ -53,6 +61,7 @@ gameEngine::gameEngine(){
 
 gameEngine::gameEngine(int height, int width){
     initVariables();
+    initFonts();
     initWindow(width, height);
     initPlayers();
     initDice();
